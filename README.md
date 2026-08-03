@@ -3,7 +3,13 @@
 Direct successor to `farneman/myvim` + `farneman/mytmux.conf`, translated to
 Neovim + lazy.nvim. See the comments in each file for the old → new mapping.
 
-## 1. Install Neovim and tmux via Homebrew
+## 1. Install Ghostty
+
+```bash
+brew install --cask ghostty
+```
+
+## 2. Install Neovim and tmux via Homebrew
 
 ```bash
 brew install neovim tmux
@@ -11,20 +17,26 @@ brew install ripgrep fd     # needed by Telescope's live_grep/find_files
 brew install fzf            # needed by telescope-fzf-native
 ```
 
-## 2. Install language runtimes via asdf
+## 3. Install language runtimes via mise
 
 The LSP servers (pyright, ts_ls) need Node and Python available. If you
-don't already have plugins installed:
+don't already have mise set up:
 
 ```bash
-asdf plugin add nodejs
-asdf plugin add python
+brew install mise
+```
 
-asdf install nodejs latest
-asdf install python latest
+Add this to your shell config (e.g. `~/.zshrc`):
 
-asdf set -u nodejs latest    # or `asdf global` on older asdf versions
-asdf set -u python latest
+```bash
+eval "$(mise activate zsh)"
+```
+
+Then install the runtimes:
+
+```bash
+mise use -g node@latest
+mise use -g python@latest
 ```
 
 Mason (the plugin that installs pyright/ts_ls inside Neovim) shells out to
@@ -35,7 +47,7 @@ you open Neovim for the first time. Confirm with:
 which node python3
 ```
 
-## 3. Install a Nerd Font (for file icons in nvim-tree/lualine)
+## 4. Install a Nerd Font (for file icons in nvim-tree/lualine)
 
 ```bash
 brew install --cask font-jetbrains-mono-nerd-font
@@ -44,16 +56,23 @@ brew install --cask font-jetbrains-mono-nerd-font
 Then set your terminal (iTerm2/Terminal.app/Ghostty/etc.) to use
 "JetBrainsMono Nerd Font" so the icons render instead of showing as boxes.
 
-## 4. Place the config files
+## 5. Place the config files
+
+Run these from the top level of this repo (the source paths below are
+relative to it):
 
 ```bash
 mkdir -p ~/.config/nvim
-cp -r nvim/* ~/.config/nvim/
+cp -r ./nvim/* ~/.config/nvim/
 
-cp tmux/.tmux.conf ~/.tmux.conf
+cp ./tmux/.tmux.conf ~/.tmux.conf
+
+mkdir -p ~/.config/ghostty/themes
+cp ./ghostty/config ~/.config/ghostty/config
+cp ./ghostty/themes/badwolf ~/.config/ghostty/themes/badwolf
 ```
 
-## 5. Install tpm (tmux plugin manager)
+## 6. Install tpm (tmux plugin manager)
 
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -63,7 +82,7 @@ Start tmux, then press `prefix + I` (that's `Ctrl-a` then capital `I`,
 matching the remapped prefix in the config) to fetch tmux-sensible,
 tmux-copycat, tmux-yank, tmux-open, tmux-resurrect, and tmux-continuum.
 
-## 6. First Neovim launch
+## 7. First Neovim launch
 
 ```bash
 nvim
@@ -81,7 +100,7 @@ and confirm `pyright` and `ts_ls` show as installed (mason-lspconfig
 installs them automatically on first launch, but `:Mason` lets you verify
 or add more servers later).
 
-## 7. Optional: bring over your custom CSS snippets
+## 8. Optional: bring over your custom CSS snippets
 
 Your old `farneman/vim-ultisnips-css` repo is UltiSnips-format snippets.
 LuaSnip can load them without rewriting:
