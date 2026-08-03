@@ -1,0 +1,23 @@
+background = 202020
+foreground = f8f6f2
+
+# from badwolf.vim's terminal ANSI mappings (0-7 normal, 8-15 bright)
+palette = 0=#000000
+palette = 1=#ff2c4b
+palette = 2=#aeee00
+palette = 3=#ffb900
+palette = 4=#0092ff
+palette = 5=#8622ff
+palette = 6=#00b6d1
+palette = 7=#f8f6f2
+palette = 8=#556172
+palette = 9=#ff2c4b
+palette = 10=#aeee00
+palette = 11=#ffb900
+palette = 12=#0092ff
+palette = 13=#8622ff
+palette = 14=#00b6d1
+palette = 15=#ffffff
+
+cursor-color = fefeff
+selection-background = 5e5e5e
