@@ -1,0 +1,41 @@
+format = """
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$docker_context\
+$dart\
+$java\
+$kotlin\
+$lua\
+$maven\
+$nodejs\
+$pulumi\
+$python\
+$ruby\
+$swift\
+$aws\
+$env_var\
+$mise\
+$custom\
+$sudo\
+$line_break\
+$jobs\
+$container\
+$status\
+$character\
+"""
+
+add_newline = true
+
+[sudo]
+disabled = false
+
+[status]
+disabled = false
+
+[character]
+success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+

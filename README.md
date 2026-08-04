@@ -56,7 +56,20 @@ brew install --cask font-jetbrains-mono-nerd-font
 Then set your terminal (iTerm2/Terminal.app/Ghostty/etc.) to use
 "JetBrainsMono Nerd Font" so the icons render instead of showing as boxes.
 
-## 5. Place the config files
+## 5. Install Starship prompt
+
+```bash
+brew install starship
+```
+
+Add this to your shell config (e.g. `~/.zshrc`), after any `oh-my-zsh`/theme
+sourcing so it takes over the prompt last:
+
+```bash
+eval "$(starship init zsh)"
+```
+
+## 6. Place the config files
 
 Run these from the top level of this repo (the source paths below are
 relative to it):
@@ -70,9 +83,11 @@ cp ./tmux/.tmux.conf ~/.tmux.conf
 mkdir -p ~/.config/ghostty/themes
 cp ./ghostty/config ~/.config/ghostty/config
 cp ./ghostty/themes/badwolf ~/.config/ghostty/themes/badwolf
+
+cp ./starship.toml ~/.config/starship.toml
 ```
 
-## 6. Install tpm (tmux plugin manager)
+## 7. Install tpm (tmux plugin manager)
 
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -82,7 +97,7 @@ Start tmux, then press `prefix + I` (that's `Ctrl-a` then capital `I`,
 matching the remapped prefix in the config) to fetch tmux-sensible,
 tmux-copycat, tmux-yank, tmux-open, tmux-resurrect, and tmux-continuum.
 
-## 7. First Neovim launch
+## 8. First Neovim launch
 
 ```bash
 nvim
@@ -100,7 +115,7 @@ and confirm `pyright` and `ts_ls` show as installed (mason-lspconfig
 installs them automatically on first launch, but `:Mason` lets you verify
 or add more servers later).
 
-## 8. Optional: bring over your custom CSS snippets
+## 9. Optional: bring over your custom CSS snippets
 
 Your old `farneman/vim-ultisnips-css` repo is UltiSnips-format snippets.
 LuaSnip can load them without rewriting:
