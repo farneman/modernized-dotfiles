@@ -23,10 +23,10 @@ return {
     dependencies = { "mason-lspconfig.nvim", "hrsh7th/cmp-nvim-lsp" },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
 
       for _, server in ipairs({ "pyright", "ts_ls", "html", "cssls" }) do
-        lspconfig[server].setup({ capabilities = capabilities })
+        vim.lsp.config(server, { capabilities = capabilities })
+        vim.lsp.enable(server)
       end
 
       -- Diagnostics shown inline, replacing Syntastic's gutter signs
